@@ -273,6 +273,15 @@ class YandexCheckout extends OffsitePaymentGatewayBase
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function getNotifyUrl() {
+      return Url::fromRoute('commerce_payment.notify', [
+        'commerce_payment_gateway' => $this->getPluginId(),
+      ], ['absolute' => TRUE]);
+    }
+
+    /**
      * Processes the "return" request.
      *
      * @param \Drupal\commerce_order\Entity\OrderInterface $order
